@@ -280,10 +280,7 @@ module RegFile(input clk,
 
   reg [31:0] rf[31:0];
 
-  // three ported register file
-  // read two ports combinationally (A1/RD1, A2/RD2)
-  // write third port on rising edge of clock (A3/WD3/WE3)
-  // register 0 hardwired to 0
+
 
   always @(posedge clk)
     if (WE3) rf[A3] <= WD3;	
@@ -352,3 +349,4 @@ module ALU (input [31:0] A, B,
   assign v = (~(ALUControl[0] ^ A[31] ^ B[31]) & (A[31] ^ sum[31]) & isAddSub);// | (alucontrol[0] ^ alucontrol[1] ^ alucontrol[2] ^ a[31] ^ b[31]) & (a[31] ^ sum; // Overflow logic added for: Mul,Div,Rem
 
 endmodule
+
